@@ -118,58 +118,58 @@ const suite = new Benchmark.Suite();
 // Add tests
 suite
   .add('kr-observable create observable object', () => {
-    kr.makeObservable({ a: [] })
+    kr.makeObservable({ a: ++krCreateCount })
   })
   .add('MobX create observable object', () => {
-    mobx.makeAutoObservable({ a: [] })
+    mobx.makeAutoObservable({ a: ++mobxCreateCount })
   })
   .add('Vue create observable object', () => {
-    vue.reactive({ a: [] })
+    vue.reactive({ a: ++vueCreateCount })
   })
 
-  // .add('kr-observable update & read without observe', () => {
-  //   state.updateA()
-  //   krReadCount = state.a;
-  // })
-  // .add('MobX update & read without observe', () => {
-  //   mobxState.updateA();
-  //   mobxReadCount = mobxState.a;
-  // })
-  // .add('Vue update & read without observe', () => {
-  //   vueState.updateA()
-  //   vueReadCount = vueState.a;
-  // })
-  //
-  // .add('kr-observable update & run reaction', () => {
-  //   state.updateB()
-  // })
-  // .add('MobX update & run reaction', () => {
-  //   mobxState.updateB()
-  // })
-  // .add('Vue update & run reaction', () => {
-  //   vueState.updateB()
-  // })
-  //
-  // .add('kr-observable update 2 props & run reaction', () => {
-  //   krs.update()
-  // })
-  // .add('MobX update 2 props & run reaction', () => {
-  //   mbs.update()
-  // })
-  // .add('Vue update 2 props & run reaction', () => {
-  //   vs.update()
-  // })
-  //
-  //
-  // .add('kr-observable update unobserved without read', () => {
-  //   state.updateC()
-  // })
-  // .add('MobX update unobserved without read', () => {
-  //   mobxState.updateC()
-  // })
-  // .add('Vue update unobserved without read', () => {
-  //   vueState.updateC()
-  // })
+  .add('kr-observable update & read without observe', () => {
+    state.updateA()
+    krReadCount = state.a;
+  })
+  .add('MobX update & read without observe', () => {
+    mobxState.updateA();
+    mobxReadCount = mobxState.a;
+  })
+  .add('Vue update & read without observe', () => {
+    vueState.updateA()
+    vueReadCount = vueState.a;
+  })
+
+  .add('kr-observable update & run reaction', () => {
+    state.updateB()
+  })
+  .add('MobX update & run reaction', () => {
+    mobxState.updateB()
+  })
+  .add('Vue update & run reaction', () => {
+    vueState.updateB()
+  })
+
+  .add('kr-observable update 2 props & run reaction', () => {
+    krs.update()
+  })
+  .add('MobX update 2 props & run reaction', () => {
+    mbs.update()
+  })
+  .add('Vue update 2 props & run reaction', () => {
+    vs.update()
+  })
+
+
+  .add('kr-observable update unobserved without read', () => {
+    state.updateC()
+  })
+  .add('MobX update unobserved without read', () => {
+    mobxState.updateC()
+  })
+  .add('Vue update unobserved without read', () => {
+    vueState.updateC()
+  })
 
   // Event listeners
   .on('cycle', function(event) {
